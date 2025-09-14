@@ -1,0 +1,12 @@
+<select [(ngModel)]="selectedAI">
+  <option *ngFor="let ai of availableAIs" [value]="ai">{{ ai }}</option>
+</select>
+
+<textarea [(ngModel)]="prompt" placeholder="Digite sua pergunta"></textarea>
+
+<button (click)="enviarPrompt()">Enviar</button>
+
+<div *ngIf="resposta">
+  <h3>Resposta:</h3>
+  <p>{{ resposta }}</p>
+</div>
