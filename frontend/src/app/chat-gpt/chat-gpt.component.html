@@ -1,12 +1,16 @@
-<select [(ngModel)]="selectedAI">
-  <option *ngFor="let ai of availableAIs" [value]="ai">{{ ai }}</option>
-</select>
+<div class="chat-container">
+  <h2>Chat GPT</h2>
 
-<textarea [(ngModel)]="prompt" placeholder="Digite sua pergunta"></textarea>
+  <select [(ngModel)]="selectedAI">
+    <option *ngFor="let ai of availableAIs" [value]="ai">{{ ai }}</option>
+  </select>
 
-<button (click)="enviarPrompt()">Enviar</button>
+  <textarea [(ngModel)]="prompt" placeholder="Digite sua pergunta"></textarea>
 
-<div *ngIf="resposta">
-  <h3>Resposta:</h3>
-  <p>{{ resposta }}</p>
+  <button (click)="enviarPrompt()" [disabled]="loading">
+    {{ loading ? 'Enviando...' : 'Enviar' }}
+  </button>
+
+  <div class="resposta">{{ resposta }}</div>
+  <div *ngIf="aviso" class="aviso">{{ aviso }}</div>
 </div>
